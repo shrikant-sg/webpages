@@ -9,20 +9,23 @@
           p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
           };p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
           n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","https://cdnjs.cloudflare.com/ajax/libs/snowplow/2.17.3/sp.min.js","testTracker"));
-        </script>        
-<!-- <script type="text/javascript">	
-	console.log("IN PF")
-			pf("recommendations", {
-  			  contentPoolId: "a26b1484-cd29-4bab-b34e-5a9a34de931f",
-  			  recommendationType: "trending"
-			},
-			   {callback: function (recommendations) {
-				// customer can execute the task's on receiving recommendations.
-				console.log("recomms loaded", recommendations)
-			}});
-	
- </script> -->
+          const initializationOptions = {
+            appId,
+            platform: "web",
+    cookieName: "_pf_",
+    cookieSameSite: window.location.protocol === "https:" ? "None" : "Lax",
+    cookieSecure: window.location.protocol === "https:",
+    contexts: {
+      webPage: true,
+      performanceTiming: true,
+    },
+    cookieDomain: findRootDomain(),
+    discoverRootDomain: false,
+    eventMethod: "beacon",
+    sessionCookieTimeout: 3600,
+  };
 
+        </script>        
 </head>
 
 <body>
