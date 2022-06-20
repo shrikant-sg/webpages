@@ -19,11 +19,27 @@
       webPage: true,
       performanceTiming: true,
     },
-    cookieDomain: findRootDomain(),
+    cookieDomain: ' null',
     discoverRootDomain: false,
     eventMethod: "beacon",
     sessionCookieTimeout: 3600,
   };
+  window.jukeboxTracker(
+    "newTracker",
+    "jukeboxTracker",
+    initializationOptions
+  );
+  window.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      window.jukeboxTracker("trackSelfDescribingEvent:jukeboxTracker", {
+        schema: "iglu:com.pathfactory/page_ping/jsonschema/2-0-0",
+        data: {
+            new_val : "Change"
+        },
+      })
+    }
+}
+  );
 
         </script>        
 </head>
